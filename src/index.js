@@ -29,6 +29,16 @@ app.get('/fullname', (req, res) => {
   }
 });
 
+app.get('/task2C', (req, res) => {
+  var login = req.query.username.match(/(http.*:)?(\/*[-\.\w]*\.[\w-]*\/)?([\w@\.]*)?(\?.*)?(\/.*)?/)[3];
+  if (login) {
+    if (login[0] != '@') login = '@' + login;
+    res.send(login);
+  } else {
+    res.send('Invalid username');
+  }
+});
+
 app.listen(3000, () => {
   console.log('Your app listening on port 3000!');
 });
